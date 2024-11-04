@@ -1,4 +1,4 @@
-from sqlalchemy import creat_engine
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from contextlib import contextmanager
 #Paramentos da conexão com myql
@@ -12,7 +12,7 @@ db_name = "meu_banco"
 #DATABASE_URL = f"mysql+pymysql://usuario:senha@host:porta:nome_bd"
 DATABASE_URL = f"mysql+pymysql://{db_usuario}:{db_passsword}@{db_host}:{db_port}/{db_name}"
 #conectando ao banco de dados 
-db= creat_engine(DATABASE_URL)
+db= create_engine(DATABASE_URL)
 Session= sessionmaker(bind=db)
 session = Session()
 
