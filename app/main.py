@@ -1,6 +1,6 @@
 from service.usuario_service import UsuarioService
-from repositorios.usario_repositorio import UsuaclrioRepository
-from config.conection import Session
+from repositorios.usario_repositorio import UsuarioRepository
+from app.config.connection import Session
 from os import system
 
 
@@ -12,7 +12,6 @@ def main():
     #Solicitando dados para o usuário.
 
     while True:
-        print("\n///Código/// \t ///Descrição///")
         print("1 - Adicionar usuário.")
         print("2 - Pesquisar um usuário.")
         print("3 - Atualizar dados de um usuário.")
@@ -43,8 +42,7 @@ def main():
                 lista_usuarios = service.listar_todos_usuarios()
                 for usuario in lista_usuarios:
                     print(f"Nome: {usuario.nome} - E-mail: {usuario.email} - Senha: {usuario.senha}")
-            case 0:
-                #Opcional : adicionar delay ao fechar terminal.    
+            case 0:    
                 break
             case _:
                 print("Código inválido, tente novamente.")            
