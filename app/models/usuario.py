@@ -5,12 +5,12 @@ from config.conection  import db
 Base= declarative_base()
 
 class Usuario(Base):
-    __tablename__ = "usarios"
+    __tablename__ = "usuarios"
 
     id = Column(Integer, primary_key=True,autoincrement=True)
     nome = Column(String(150))
     email = Column(String(150),unique=True) #Não aceita email repetido
-    nome = Column(String(150))
+    senha = Column(String(150))
 
     def __init__(self,nome:str,email:str,senha:str):
         self.nome = nome 
