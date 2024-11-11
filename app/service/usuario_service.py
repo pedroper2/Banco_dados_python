@@ -1,6 +1,6 @@
 from models.usuario import Usuario
 from repositorios.usario_repositorio import UsuarioRepository
-from app.test import tes_usario
+
 
 class UsuarioService:
     def __init__(self,repository:UsuarioRepository):
@@ -31,7 +31,7 @@ class UsuarioService:
             email_usuario= input("Digite o email do usuario: ")
             cadastro= self.repository.pesquisar_usario(email= email_usuario)
             if cadastro:
-                print(F"Nome{cadastro.nome} email{cadastro.email} senha{cadastro.senha}")
+                print(F"Nome: {cadastro.nome} email: {cadastro.email} senha: {cadastro.senha}")
                 return
             else:
                 print("Nome não encontrado")

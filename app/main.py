@@ -8,6 +8,7 @@ from app.config.connection import Session
 from app.repositorios.usario_repositorio import UsuarioRepository
 from app.service.usuario_service import UsuarioService
 
+
 def main():
     session = Session()
     repository = UsuarioRepository(session)
@@ -51,11 +52,11 @@ def main():
             case _:
                 print("Código inválido, tente novamente.")            
 
-
-
+    session.close()
 if __name__ == "__main__":
     os.system("cls || clear")
     main()
+    
             
 
               

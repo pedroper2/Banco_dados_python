@@ -1,6 +1,6 @@
 from sqlalchemy import Column,String,Integer
 from sqlalchemy.orm import declarative_base
-from config.connection import db 
+from app.config.connection import db 
 
 Base= declarative_base()
 
@@ -13,15 +13,15 @@ class Usuario(Base):
     senha = Column(String(150))
 
     def __init__(self,nome:str,email:str,senha:str):
-        self.nome = nome 
-        self.email= email
-        self.senha = senha 
+        self.nome = self._verificar_Geral(nome)
+        self.email= self._verificar_Geral(email)
+        self.senha = self._verificar_Geral(senha)
 
-    def _verificar_tipo_e_valor(self,valor):
-        if not isinstance(valor,str):
+    def _verificar_Geral(self,true):
+        if not isinstance(true,str):
             raise TypeError("Tipo inválido.")
-        if not valor.strip():
+        if not true.strip():
             raise ValueError("Insira um valor.")
-        return valor
+        return true
 #Criando tabela no banco de dados
 Base.metadata.create_all(bind=db)
