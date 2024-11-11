@@ -1,5 +1,6 @@
 from models.usuario import Usuario
 from repositorios.usario_repositorio import UsuarioRepository
+from app.test import tes_usario
 
 class UsuarioService:
     def __init__(self,repository:UsuarioRepository):
@@ -8,8 +9,8 @@ class UsuarioService:
     def criar_usuario(self,nome:str,email:str,senha:str):
         try:
             usuario = Usuario(nome=nome,email=email,senha= senha)
-
-            cadastro= self.repository.listar_usuario_por_nome(usuario.nome)
+            
+            cadastro= self.repository.pesquisar_usario(usuario.email)
 
             if cadastro:
                 print("Usuario já existe no banco de dados.")
@@ -24,10 +25,11 @@ class UsuarioService:
 
     def listar_todos_usuarios(self):
         return self.repository.listar_todos_usuarios()
-    def pesquisa_usuario(self):
+    
+    def pesquisar_usuario(self):
         try:
-            nome_usuario= input("Digite o nome do usuario: ")
-            cadastro= self.repository.pesquisa_usario(nome= nome_usuario)
+            email_usuario= input("Digite o email do usuario: ")
+            cadastro= self.repository.pesquisar_usario(email= email_usuario)
             if cadastro:
                 print(F"Nome{cadastro.nome} email{cadastro.email} senha{cadastro.senha}")
                 return
@@ -60,6 +62,7 @@ class UsuarioService:
             print(f"Erro ao atualizar o usuário: {error}")
         except Exception as error:
             print(f"Erro inesperado: {error}")
+            
     def excluir_dados_usuario(self):
         try:
             print("\nExcluindo dados do usuário.")

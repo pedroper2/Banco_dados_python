@@ -17,5 +17,11 @@ class Usuario(Base):
         self.email= email
         self.senha = senha 
 
+    def _verificar_tipo_e_valor(self,valor):
+        if not isinstance(valor,str):
+            raise TypeError("Tipo inválido.")
+        if not valor.strip():
+            raise ValueError("Insira um valor.")
+        return valor
 #Criando tabela no banco de dados
 Base.metadata.create_all(bind=db)
