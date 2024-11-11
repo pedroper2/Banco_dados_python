@@ -20,17 +20,13 @@ def test_nome_vazio():
     with pytest.raises(ValueError,match = "Insira um valor."):
         Usuario("","Pedro@gmail.com","123")
 
-def test_email_vazio():
-    with pytest.raises(ValueError,match = "Insira um valor."):
-        Usuario("Pedro","","123")
-
-def test_senha_vazia():
-    with pytest.raises(ValueError,match = "Insira um valor."):
-        Usuario("Pedro","Pedro@gmail.com","")
-
 def test_nome_invalido():
     with pytest.raises(TypeError, match= "Tipo inválido."):
         Usuario(256,"Pedro@gmail.com","123")
+
+def test_email_vazio():
+    with pytest.raises(ValueError,match = "Insira um valor."):
+        Usuario("Pedro","","123")
 
 def test_email_invalido():
     with pytest.raises(TypeError, match= "Tipo inválido."):
@@ -39,6 +35,12 @@ def test_email_invalido():
 def test_senha_invalida():
     with pytest.raises(TypeError, match= "Tipo inválido."):
         Usuario(256,"Pedro@gmail.com",123)       
+        
+def test_senha_vazia():
+    with pytest.raises(ValueError,match = "Insira um valor."):
+        Usuario("Pedro","Pedro@gmail.com","")
+
+
         
 
 
